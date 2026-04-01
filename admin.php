@@ -48,7 +48,7 @@ foreach($respostas as $r) {
             </div>
 
             <div class="stat-card">
-                <h3>@Média de Estresse</h3>
+                <h3>Média de Estresse</h3>
                 <div class="value"><?= round($mediaEstresse, 1) ?></div>
                 <div class="label">escala 0 a 10</div>
             </div>
