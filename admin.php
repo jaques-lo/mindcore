@@ -36,7 +36,7 @@ foreach($respostas as $r) {
         
         <div class="stats-grid">
             <div class="stat-card">
-                <h3>Total de Respostas</h3>
+                <h3>Total de Respostas.</h3>
                 <div class="value"><?= $total ?></div>
                 <div class="label">avaliações recebidas</div>
             </div>
@@ -61,7 +61,7 @@ foreach($respostas as $r) {
         </div>
 
         <div class="chart-container">
-            <div class="chart-title">test- Distribuição do Humor</div>
+            <div class="chart-title">Distribuição do Humor</div>
             <div class="bar-container">
 
                 <div class="bar-item">
