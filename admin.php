@@ -61,7 +61,7 @@ foreach($respostas as $r) {
         </div>
 
         <div class="chart-container">
-            <div class="chart-title">Distribuição do Humor</div>
+            <div class="chart-title">test- Distribuição do Humor</div>
             <div class="bar-container">
 
                 <div class="bar-item">
