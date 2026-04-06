@@ -28,8 +28,8 @@ foreach($respostas as $r) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindTest - Dashboard Admin</title>
-    <img src="assets/imagens/mindcore-logo.png" alt="Logotipo da MindCore" width="150" >
     <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="icon" type="image/png" href="assets/imagens/mindcore-logo.png">
 </head>
 <body>
     <div class="container">
