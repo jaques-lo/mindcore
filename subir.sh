@@ -8,9 +8,7 @@ VERMELHO='\033[0;31m'
 NC='\033[0m' # No Color
 
 echo ""
-echo "══════════════════════════════════════════════════"
 echo "MINDCORE - SCRIPT DE DEPLOY"
-echo "══════════════════════════════════════════════════"
 echo ""
 
 # Verifica se tem alterações
@@ -21,7 +19,7 @@ if [[ -z $(git status -s) ]]; then
 fi
 
 # Mostra as alterações
-echo -e "${AZUL}📝 Arquivos modificados:${NC}"
+echo -e "${AZUL}Arquivos modificados:${NC}"
 git status -s
 echo ""
 
@@ -55,7 +53,7 @@ echo -e "${AZUL}Enviando para o Gitea...${NC}"
 git push origin main
 
 # Sincroniza com a VM
-echo -e "${AZUL}🔄 Sincronizando com a VM...${NC}"
+echo -e "${AZUL}󰑓 Sincronizando com a VM...${NC}"
 rsync -avz --delete \
   --exclude '.git' \
   --exclude '*.sql' \
