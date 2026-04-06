@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindCore - Bem-Estar no Trabalho</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="icon" type="image/png" href="assets/imagens/mindcore-logo.png">
+    <link rel="icon" type="image/png" href="assets/imagens/mindcore-logo.png" width="300" height="200">
 </head>
 <body>
     <div class="card">
