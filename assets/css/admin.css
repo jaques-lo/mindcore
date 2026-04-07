@@ -21,7 +21,7 @@ body {
 .container {
     max-width: 1200px; /* Dashboard mais largo que o formulário */
     margin: 0 auto;
-    animation: fadeIn 0.8s ease-in-out; /* Entrada suave vindo de cima a */
+    animation: fadeIn 0.8s ease-in-out; /* Entrada suave vindo de cima  */
 }
 
 h1 {
