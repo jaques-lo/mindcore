@@ -16,7 +16,7 @@
         <h2>Como você está se sentindo hoje?</h2>
         
         <div class="slider-group">
-            <label>Humor <span>(0 = péssimo, 10 = excelente)</span></label>
+            <label>Humor <span>(0 = péssimoo, 10 = excelente)</span></label>
             <input type="range" id="humor" min="0" max="10" value="5">
             <span class="value" id="humorValue">5</span>
         </div>
