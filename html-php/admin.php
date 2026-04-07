@@ -1,5 +1,5 @@
 <?php
-require_once 'config/database.php';
+require_once '../config/database.php';
 
 $sql = "SELECT * FROM respostas ORDER BY data DESC";
 $stmt = $pdo->query($sql);

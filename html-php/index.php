@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MindCore - Bem-Estar no Trabalho</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    
+    <title>MindCore - Bem-Estar</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="icon" type="image/png" href="../assets/imagens/mindcore-logo.png">
 </head>
 <body>
+    <script src="../assets/js/script.js"></script>
     <div class="card">
         <h1>
             MindCore
