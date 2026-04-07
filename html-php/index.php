@@ -6,12 +6,12 @@
     <title>MindCore - Bem-Estar no Trabalho</title>
     <link rel="stylesheet" href="assets/css/style.css">
     
-    <link rel="icon" type="image/png" href="assets/imagens/mindcore-logo.png">
+    <link rel="icon" type="image/png" href="../assets/imagens/mindcore-logo.png">
 </head>
 <body>
     <div class="card">
         <h1>
-            <span class="emoji">🧠</span> MindCore
+            MindCore
         </h1>
         <h2>Como você está se sentindo hoje?</h2>
         
