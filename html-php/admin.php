@@ -1,27 +1,41 @@
 <?php
+/**
+ * MindCore - Dashboard Admin
+ * Este arquivo processa dados de saúde mental e os exibe em uma interface administrativa.
+ */
+
+// 1. CONEXÃO E BUSCA DE DADOS
 require_once 'config/database.php';
 
+// Busca todas as respostas ordenando pela data mais recente (DESC)
 $sql = "SELECT * FROM respostas ORDER BY data DESC";
 $stmt = $pdo->query($sql);
 $respostas = $stmt->fetchAll();
 $total = count($respostas);
 
-// Calcula médias
+// 2. PROCESSAMENTO E ESTATÍSTICAS
+// Calcula as médias aritméticas (Soma de todos os valores / quantidade total)
+// O operador ternário ($total > 0 ?) evita erro de divisão por zero caso o banco esteja vazio
 $mediaHumor = $total > 0 ? array_sum(array_column($respostas, 'humor')) / $total : 0;
 $mediaEstresse = $total > 0 ? array_sum(array_column($respostas, 'estresse')) / $total : 0;
 $mediaSono = $total > 0 ? array_sum(array_column($respostas, 'sono')) / $total : 0;
 
-// Conta por nível
-$humorBom = 0;
-$humorMedio = 0;
-$humorRuim = 0;
+// Inicializa contadores para o gráfico de distribuição de humor
+$humorBom = 0;   // Notas 7 a 10
+$humorMedio = 0; // Notas 4 a 6
+$humorRuim = 0;  // Notas 0 a 3
 
 foreach($respostas as $r) {
-    if($r['humor'] >= 7) $humorBom++;
-    elseif($r['humor'] >= 4) $humorMedio++;
-    else $humorRuim++;
+    if($r['humor'] >= 7) {
+        $humorBom++;
+    } elseif($r['humor'] >= 4) {
+        $humorMedio++;
+    } else {
+        $humorRuim++;
+    }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -34,7 +48,6 @@ foreach($respostas as $r) {
 <body>
     <div class="container">
         <h1>MindCore - Dashboard Admin</h1>
-        
         
         <div class="stats-grid">
             <div class="stat-card">
@@ -65,7 +78,6 @@ foreach($respostas as $r) {
         <div class="chart-container">
             <div class="chart-title">Distribuição do Humor</div>
             <div class="bar-container">
-
                 <div class="bar-item">
                     <div class="bar" style="height: <?= $total > 0 ? ($humorBom / $total * 100) : 0 ?>px;"></div>
                     <div class="bar-label">Bom</div>
@@ -80,7 +92,6 @@ foreach($respostas as $r) {
                     <div class="bar ruim" style="height: <?= $total > 0 ? ($humorRuim / $total * 100) : 0 ?>px;"></div>
                     <div class="bar-label">Ruim</div>
                 </div>
-
             </div>
         </div>
 
@@ -103,6 +114,12 @@ foreach($respostas as $r) {
 
                 <?php foreach($respostas as $r): ?>
                 <?php
+                    /**
+                     * LÓGICA DE CORES (BADGES)
+                     * Define a classe CSS conforme a nota para facilitar a leitura visual:
+                     * - Humor/Sono: Notas altas são 'bom' (verde), baixas 'ruim' (vermelho).
+                     * - Estresse: Notas baixas são 'bom' (verde), altas 'ruim' (vermelho).
+                     */
                     $humorClass = $r['humor'] >= 7 ? 'bom' : ($r['humor'] >= 4 ? 'medio' : 'ruim');
                     $estresseClass = $r['estresse'] <= 3 ? 'bom' : ($r['estresse'] <= 6 ? 'medio' : 'ruim');
                     $sonoClass = $r['sono'] >= 7 ? 'bom' : ($r['sono'] >= 4 ? 'medio' : 'ruim');

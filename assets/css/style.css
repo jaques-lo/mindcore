@@ -1,21 +1,20 @@
 /* =========================
-   RESET
+   RESET (Limpeza padrão)
+   Remove as margens e paddings que o navegador coloca sozinho.
 ========================= */
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Garante que padding e borda não aumentem o tamanho do elemento */
 }
 
 body {
     font-family: 'Inter', sans-serif;
-    height: 100vh;
-
-    background: #0b0f1a;
+    height: 100vh; /* Ocupa a altura total da tela */
+    background: #0b0f1a; /* Fundo azul escuro profundo */
     display: flex;
     align-items: center;
-    justify-content: center;
-
+    justify-content: center; /* Centraliza o card no meio da tela */
     color: #e5e7eb;
 }
 
@@ -23,59 +22,56 @@ body {
    CONTAINER
 ========================= */
 .container {
-    width: 100px;
+    width: 100%; /* Ajustado: 100px era muito pouco, 100% preenche o espaço */
     padding: 20px;
     display: flex;
     justify-content: center;
 }
 
 /* =========================
-   CARD (COM GLOW)
+   CARD (Onde a mágica acontece)
 ========================= */
 .card {
     width: 100%;
     max-width: 400px;
     padding: 30px;
     border-radius: 16px;
-
-    background: #111827;
+    background: #111827; /* Fundo do card ligeiramente mais claro que o body */
     border: 1px solid #1f2937;
-
     position: relative;
-    overflow: hidden;
-
-    animation: fadeIn 0.6s ease;
+    overflow: hidden; /* Esconde o que sobrar do efeito de brilho (glow) */
+    animation: fadeIn 0.6s ease; /* Efeito de entrada suave */
     transition: 0.3s;
 }
 
-/* glow animado */
+/* Efeito de Glow (Brilho) animado usando um pseudo-elemento */
 .card::before {
     content: "";
     position: absolute;
-    inset: -1px;
+    inset: -1px; /* Fica exatamente atrás da borda */
     border-radius: 16px;
-
     background: linear-gradient(120deg, #3b82f6, transparent, #3b82f6);
-    opacity: 0;
+    opacity: 0; /* Começa invisível */
     transition: 0.4s;
 }
 
+/* Quando passa o mouse, o brilho azul aparece */
 .card:hover::before {
     opacity: 1;
 }
 
-/* conteúdo acima do glow */
+/* Garante que o texto fique por cima do efeito de brilho */
 .card * {
     position: relative;
     z-index: 1;
 }
 
 .card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px); /* Efeito de "levante" ao passar o mouse */
 }
 
 /* =========================
-   HEADER
+   HEADER & TEXTOS
 ========================= */
 .header {
     text-align: center;
@@ -94,23 +90,8 @@ body {
     margin-top: 5px;
 }
 
-/* remove emoji visual pesado */
-.emoji {
-    display: none;
-}
-
 /* =========================
-   FORM
-========================= */
-form h2 {
-    font-size: 14px;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #cbd5f5;
-}
-
-/* =========================
-   SLIDERS
+   SLIDERS (Controles de Range)
 ========================= */
 .slider-group {
     margin-bottom: 22px;
@@ -118,69 +99,35 @@ form h2 {
 
 .label-row {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between; /* Texto na esquerda, número na direita */
     margin-bottom: 6px;
 }
 
-.label-row label {
-    font-size: 14px;
-}
-
 .label-row span {
-    font-size: 14px;
     font-weight: 600;
-    color: #3b82f6;
+    color: #3b82f6; /* Destaque azul para o número (valor do slider) */
 }
 
-/* descrição */
-.slider-group small {
-    display: block;
-    font-size: 11px;
-    color: #6b7280;
-    margin-top: 5px;
-}
-
-/* =========================
-   RANGE MODERNO
-========================= */
+/* Personalização da barra do slider */
 input[type="range"] {
+    appearance: none; /* Remove o visual padrão do navegador */
     width: 100%;
     height: 6px;
     border-radius: 6px;
-
     background: #1f2937;
     outline: none;
-    transition: 0.3s;
 }
 
-input[type="range"]:hover {
-    background: #374151;
-}
-
-/* bolinha */
+/* Personalização da "bolinha" do slider (Thumb) */
 input[type="range"]::-webkit-slider-thumb {
     appearance: none;
     width: 16px;
     height: 16px;
     border-radius: 50%;
-
     background: #3b82f6;
     cursor: pointer;
-
-    box-shadow: 0 0 12px rgba(59, 130, 246, 0.8);
+    box-shadow: 0 0 12px rgba(59, 130, 246, 0.8); /* Brilho neon na bolinha */
     transition: 0.2s;
-}
-
-input[type="range"]::-webkit-slider-thumb:hover {
-    transform: scale(1.2);
-}
-
-/* firefox */
-input[type="range"]::-moz-range-thumb {
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    background: #3b82f6;
 }
 
 /* =========================
@@ -191,74 +138,30 @@ button {
     padding: 12px;
     border-radius: 10px;
     border: 1px solid #1f2937;
-
     background: #1f2937;
     color: #e5e7eb;
-
-    font-size: 14px;
     font-weight: 500;
-
     cursor: pointer;
     transition: 0.3s;
-    margin-top: 10px;
 }
 
 button:hover {
     background: #0e1e36;
     border-color: #13366e;
     transform: translateY(-2px);
-
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
-}
-
-button:active {
-    transform: scale(0.96);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.6); /* Brilho azul ao focar */
 }
 
 /* =========================
-   RESULTADO
-========================= */
-.resultado {
-    margin-top: 15px;
-    font-size: 13px;
-    text-align: center;
-    min-height: 20px;
-    color: #60a5fa;
-}
-
-/* =========================
-   FOOTER
-========================= */
-.footer {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 11px;
-    color: #6b7280;
-}
-
-/* =========================
-   ANIMAÇÕES
+   ANIMAÇÃO DE ENTRADA
 ========================= */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(25px);
+        transform: translateY(25px); /* Começa debaixo e sobe */
     }
     to {
         opacity: 1;
         transform: translateY(0);
-    }
-}
-
-/* =========================
-   RESPONSIVO
-========================= */
-@media (max-width: 420px) {
-    .card {
-        padding: 25px 20px;
-    }
-
-    .header h1 {
-        font-size: 20px;
     }
 }

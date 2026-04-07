@@ -5,31 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MindCore - Bem-Estar no Trabalho</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <!--/*isso aqui em baixo funciona mas nao direito da uma mao ai vinicim e olha o admin tb */-->
-    <link rel="icon" type="image/png" href="assets/imagens/mindcore-logo.png" width="300" height="200">
+    
+    <link rel="icon" type="image/png" href="assets/imagens/mindcore-logo.png">
 </head>
 <body>
     <div class="card">
         <h1>
-            <span class="emoji"></span> MindCore
+            <span class="emoji">🧠</span> MindCore
         </h1>
         <h2>Como você está se sentindo hoje?</h2>
         
         <div class="slider-group">
-            <label>Humor <span>(0 = péssimo, 10 = excelente)</span></label>
-            <input type="range" id="humor" min="0" max="10" value="5">
+            <label for="humor">Humor <span>(0 = péssimo, 10 = excelente)</span></label>
+            <input type="range" id="humor" min="0" max="10" value="5" oninput="updateValue('humor')">
             <span class="value" id="humorValue">5</span>
         </div>
         
         <div class="slider-group">
-            <label>Estresse <span>(0 = nenhum, 10 = extremo)</span></label>
-            <input type="range" id="estresse" min="0" max="10" value="5">
+            <label for="estresse">Estresse <span>(0 = nenhum, 10 = extremo)</span></label>
+            <input type="range" id="estresse" min="0" max="10" value="5" oninput="updateValue('estresse')">
             <span class="value" id="estresseValue">5</span>
         </div>
         
         <div class="slider-group">
-            <label>Sono <span>(0 = péssimo, 10 = excelente)</span></label>
-            <input type="range" id="sono" min="0" max="10" value="5">
+            <label for="sono">Sono <span>(0 = péssimo, 10 = excelente)</span></label>
+            <input type="range" id="sono" min="0" max="10" value="5" oninput="updateValue('sono')">
             <span class="value" id="sonoValue">5</span>
         </div>
         
@@ -45,6 +45,12 @@
         </div>
     </div>
     
+    <script>
+        function updateValue(id) {
+            const val = document.getElementById(id).value;
+            document.getElementById(id + 'Value').innerText = val;
+        }
+    </script>
     <script src="assets/js/script.js"></script>
 </body>
 </html>
