@@ -15,7 +15,7 @@ $mediaSono = $total > 0 ? array_sum(array_column($respostas, 'sono')) / $total :
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>MindCore - Admin</title>
+    <title>MindCore-Admin</title>
     <link rel="stylesheet" href="../assets/css/admin.css">
 </head>
 <body>
