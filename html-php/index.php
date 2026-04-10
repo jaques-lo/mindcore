@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="icon" type="image/png" href="../assets/imagens/mindcore-logo.png">
 </head>
+
+     <img src="assets/imagens/mindcore-logo.png" class="logo">
+
 <body>
     <script src="../assets/js/script.js"></script>
     <div class="card">
