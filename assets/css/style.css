@@ -48,19 +48,9 @@ body {
     position: relative;
     overflow: hidden; /* Esconde o que sobrar do efeito de brilho (glow) */
     animation: fadeIn 0.6s ease; /* Efeito de entrada suave */
-    transition: 0.3s;
-}
+    
 
-/* Efeito de Glow (Brilho) animado usando um pseudo-elemento */
-.card::before {
-    content: "";
-    position: absolute;
-    inset: -1px; /* Fica exatamente atrás da borda */
-    border-radius: 16px;
-    background: linear-gradient(120deg, #3b82f6, transparent, #3b82f6);
-    opacity: 0; /* Começa invisível */
-    transition: 0.4s;
-}
+
 
 /* Quando passa o mouse, o brilho azul aparece */
 .card:hover::before {
