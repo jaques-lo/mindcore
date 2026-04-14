@@ -32,13 +32,9 @@
 <body>
     <!-- Corpo do documento - todo conteúdo visível da página fica aqui -->
 
-    <img src="assets/imagens/mindcore-logo.png" class="logo">
+    <img src="../assets/imagens/mindcore-logo.png" class="logo">
 <!-- Exibe a imagem do logo. src aponta para o arquivo, class aplica estilo CSS -->
-    
-    <script src="../assets/js/script.js"></script>
-    <!-- Carrega um arquivo JavaScript externo (se existir) 
-         ATENÇÃO: carregado antes do conteúdo HTML, pode causar atraso na renderização -->
-    
+      
     <div class="card">
         <!-- Div container com classe "card" (provavelmente estilizada como cartão/flutuante) -->
         
@@ -115,9 +111,8 @@
         }
     </script>
     
-    <script src="assets/js/script.js"></script>
-    <!-- Carrega outro arquivo JavaScript (possivelmente contém a função enviar())
-         ATENÇÃO: carregado duas vezes (já tem um no início do body) -->
+   <script src="../assets/js/script.js"></script>
+    
 </body>
 </html>
 <!-- Fim do documento HTML -->

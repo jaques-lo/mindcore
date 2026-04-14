@@ -16,7 +16,7 @@ async function enviar() {
     
     try {
         // Envia para a pasta api/
-        const res = await fetch('api/salvar.php', {
+        const res = await fetch('../api/salvar.php',  {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(dados)
