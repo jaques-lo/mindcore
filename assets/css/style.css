@@ -48,7 +48,7 @@ body {
     position: relative;
     overflow: hidden; /* Esconde o que sobrar do efeito de brilho (glow) */
     animation: fadeIn 0.6s ease; /* Efeito de entrada suave */
-    
+}
 
 
 
