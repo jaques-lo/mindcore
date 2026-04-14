@@ -104,7 +104,7 @@
             // Parâmetro id: identifica qual slider foi movido ('humor', 'estresse' ou 'sono')
             
             const val = document.getElementById(id).value;
-            // Pega o elemento input pelo id e obtém seu valor atual
+            // Pega o elemento input pelo id e obtém seu valor atua l
             
             document.getElementById(id + 'Value').innerText = val;
             // Encontra o span correspondente (ex: 'humorValue') e atualiza o texto com o valor
