@@ -1,164 +1,265 @@
-/* =========================
-   RESET (Limpeza padrão)
-   Remove as margens e paddings que o navegador coloca sozinho.
-========================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box; /* Garante que padding e borda não aumentem o tamanho do elemento */
+/* =============================================
+   MINDCORE — style.css (index)
+   Tema: dark industrial com acento ciano-elétrico
+============================================= */
+
+:root {
+    --bg:        #080b12;
+    --surface:   #0e1420;
+    --border:    #1a2235;
+    --accent:    #00e5ff;
+    --accent2:   #7c3aed;
+    --text:      #e2e8f0;
+    --muted:     #64748b;
+    --success:   #22c55e;
+    --error:     #ef4444;
+    --font-head: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --radius:    14px;
 }
 
-.logo {
-    position: absolute;
-    top: 20px;    
-    left: 20px;   
-    width: 60px;
+*, *::before, *::after {
+    margin: 0; padding: 0;
+    box-sizing: border-box;
 }
+
+html { font-size: 16px; }
 
 body {
-    font-family: 'Inter', sans-serif;
-    height: 100vh; /* Ocupa a altura total da tela */
-    background: #0b0f1a; /* Fundo azul escuro profundo */
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center; /* Centraliza o card no meio da tela */
-    color: #e5e7eb;
+    position: relative;
+    overflow-x: hidden;
 }
 
-/* =========================
-   CONTAINER
-========================= */
-.container {
-    width: 100%; /* Ajustado: 100px era muito pouco, 100% preenche o espaço */
-    padding: 20px;
-    display: flex;
-    justify-content: center;
+/* ── Background decorativo ── */
+.bg-grid {
+    position: fixed; inset: 0; z-index: 0;
+    background-image:
+        linear-gradient(rgba(0,229,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
 }
 
-/* =========================
-   CARD (Onde a mágica acontece)
-========================= */
+.bg-glow {
+    position: fixed;
+    top: -200px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,229,255,.07) 0%, transparent 70%);
+    pointer-events: none; z-index: 0;
+}
+
+/* ── Header ── */
+.site-header {
+    position: relative; z-index: 10;
+    display: flex; align-items: center; gap: 10px;
+    padding: 28px 0 0;
+}
+
+.logo-mark {
+    width: 34px; height: 34px;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 18px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.logo-text {
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: .5px;
+    color: var(--text);
+}
+
+/* ── Main / Card ── */
+.main-wrap {
+    position: relative; z-index: 10;
+    width: 100%; max-width: 480px;
+    padding: 32px 20px 60px;
+}
+
 .card {
-    width: 100%;
-    max-width: 400px;
-    padding: 30px;
-    border-radius: 16px;
-    background: #111827; /* Fundo do card ligeiramente mais claro que o body */
-    border: 1px solid #1f2937;
-    position: relative;
-    overflow: hidden; /* Esconde o que sobrar do efeito de brilho (glow) */
-    animation: fadeIn 0.6s ease; /* Efeito de entrada suave */
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 36px 32px;
+    animation: slideUp .5s cubic-bezier(.22,1,.36,1) both;
 }
 
-
-
-/* Quando passa o mouse, o brilho azul aparece */
-.card:hover::before {
-    opacity: 1;
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Garante que o texto fique por cima do efeito de brilho */
-.card * {
-    position: relative;
-    z-index: 1;
+/* ── Card header ── */
+.card-header { margin-bottom: 32px; }
+
+.card-header h1 {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.15;
+    color: #fff;
 }
 
-.card:hover {
-    transform: translateY(-5px); /* Efeito de "levante" ao passar o mouse */
-}
-
-/* =========================
-   HEADER & TEXTOS
-========================= */
-.header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.header h1 {
-    font-size: 24px;
-    font-weight: 600;
-    color: #f1f5f9;
+.card-header h1 em {
+    font-style: normal;
+    color: var(--accent);
 }
 
 .subtitle {
-    font-size: 13px;
-    color: #94a3b8;
-    margin-top: 5px;
+    margin-top: 8px;
+    font-size: .82rem;
+    color: var(--muted);
+    letter-spacing: .4px;
+    text-transform: uppercase;
 }
 
-/* =========================
-   SLIDERS (Controles de Range)
-========================= */
-.slider-group {
-    margin-bottom: 22px;
-}
+/* ── Sliders ── */
+.sliders-wrap { display: flex; flex-direction: column; gap: 26px; }
 
-.label-row {
+.slider-group {}
+
+.slider-top {
     display: flex;
-    justify-content: space-between; /* Texto na esquerda, número na direita */
-    margin-bottom: 6px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
-.label-row span {
+.slider-top label {
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--font-head);
     font-weight: 600;
-    color: #3b82f6; /* Destaque azul para o número (valor do slider) */
+    font-size: .95rem;
+    color: var(--text);
+    cursor: default;
 }
 
-/* Personalização da barra do slider */
+.slider-icon { font-size: 1rem; }
+
+.value-badge {
+    min-width: 34px; height: 34px;
+    background: var(--border);
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .15s, color .15s;
+}
+
+.slider-track-wrap { position: relative; }
+
 input[type="range"] {
-    appearance: none; /* Remove o visual padrão do navegador */
-    width: 100%;
-    height: 6px;
-    border-radius: 6px;
-    background: #1f2937;
-    outline: none;
-}
-
-/* Personalização da "bolinha" do slider (Thumb) */
-input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
     appearance: none;
-    width: 16px;
-    height: 16px;
+    width: 100%; height: 5px;
+    border-radius: 99px;
+    background: var(--border);
+    outline: none;
+    cursor: pointer;
+    transition: background .2s;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px; height: 20px;
     border-radius: 50%;
-    background: #3b82f6;
-    cursor: pointer;
-    box-shadow: 0 0 12px rgba(59, 130, 246, 0.8); /* Brilho neon na bolinha */
-    transition: 0.2s;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0,229,255,.2), 0 0 16px rgba(0,229,255,.4);
+    transition: transform .15s, box-shadow .15s;
+    cursor: grab;
 }
 
-/* =========================
-   BOTÃO
-========================= */
-button {
+input[type="range"]:active::-webkit-slider-thumb {
+    transform: scale(1.2);
+    cursor: grabbing;
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    border: none;
+    background: var(--accent);
+    box-shadow: 0 0 16px rgba(0,229,255,.4);
+    cursor: grab;
+}
+
+.slider-hints {
+    display: flex; justify-content: space-between;
+    margin-top: 5px;
+    font-size: .72rem;
+    color: var(--muted);
+}
+
+/* ── Botão ── */
+.btn-send {
     width: 100%;
-    padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #1f2937;
-    background: #1f2937;
-    color: #e5e7eb;
-    font-weight: 500;
+    margin-top: 32px;
+    padding: 15px 20px;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    border-radius: var(--radius);
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: .5px;
     cursor: pointer;
-    transition: 0.3s;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    transition: transform .15s, box-shadow .15s, background .15s;
 }
 
-button:hover {
-    background: #0e1e36;
-    border-color: #13366e;
+.btn-send:hover {
     transform: translateY(-2px);
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.6); /* Brilho azul ao focar */
+    box-shadow: 0 8px 30px rgba(0,229,255,.35);
 }
 
-/* =========================
-   ANIMAÇÃO DE ENTRADA
-========================= */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(25px); /* Começa debaixo e sobe */
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.btn-send:active { transform: translateY(0); }
+
+.btn-icon { font-size: 1.1rem; transition: transform .2s; }
+.btn-send:hover .btn-icon { transform: translateX(4px); }
+
+/* ── Resultado ── */
+.resultado {
+    margin-top: 16px;
+    min-height: 24px;
+    font-size: .9rem;
+    font-weight: 500;
+    text-align: center;
+    transition: all .3s;
+}
+
+/* ── Footer do card ── */
+.card-footer {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: .78rem;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.6;
+}
+
+.card-footer small { opacity: .7; }
+
+/* ── Responsivo ── */
+@media (max-width: 480px) {
+    .card { padding: 28px 22px; }
+    .card-header h1 { font-size: 1.65rem; }
 }

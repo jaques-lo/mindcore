@@ -1,196 +1,279 @@
-/* =========================
-   RESET E CONFIGURAÇÃO GERAL
-========================= */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* =============================================
+   MINDCORE — admin.css
+============================================= */
+
+:root {
+    --bg:       #080b12;
+    --surface:  #0e1420;
+    --border:   #1a2235;
+    --accent:   #00e5ff;
+    --text:     #e2e8f0;
+    --muted:    #64748b;
+    --bom:      #22c55e;
+    --medio:    #f59e0b;
+    --ruim:     #ef4444;
+    --font-head:'Syne', sans-serif;
+    --font-body:'DM Sans', sans-serif;
 }
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-    background: #0b0f1a; /* Fundo azul escuro profundo */
-    color: #e5e7eb; /* Texto cinza claro para leitura confortável */
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
     min-height: 100vh;
-    padding: 40px 20px;
 }
 
-/* =========================
-   CONTAINER PRINCIPAL
-========================= */
-.container {
-    max-width: 1200px; /* Dashboard mais largo que o formulário */
-    margin: 0 auto;
-    animation: fadeIn 0.8s ease-in-out; /* Entrada suave vindo de cima  */
+/* ── BG grid ── */
+.bg-grid {
+    position: fixed; inset: 0; z-index: 0;
+    background-image:
+        linear-gradient(rgba(0,229,255,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 28px;
+/* ── Header ── */
+.admin-header {
+    position: relative; z-index: 10;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--border);
+    background: rgba(8,11,18,.8);
+    backdrop-filter: blur(10px);
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.header-left {
+    display: flex; align-items: center; gap: 12px;
+}
+
+.logo-mark {
+    width: 34px; height: 34px;
+    background: var(--accent);
+    color: var(--bg);
+    font-family: var(--font-head);
+    font-weight: 800; font-size: 18px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+}
+
+.logo-text {
+    font-family: var(--font-head);
+    font-weight: 700; font-size: 17px;
+    display: block;
+}
+
+.admin-badge {
+    font-size: .68rem;
+    background: rgba(0,229,255,.12);
+    color: var(--accent);
+    border: 1px solid rgba(0,229,255,.25);
+    padding: 2px 8px;
+    border-radius: 99px;
+    letter-spacing: .5px;
+    text-transform: uppercase;
     font-weight: 600;
+    margin-left: 6px;
 }
 
-/* =========================
-   GRID DE ESTATÍSTICAS (CARDS)
-========================= */
+.header-right {
+    display: flex; align-items: center; gap: 10px;
+}
+
+.btn-back, .btn-refresh {
+    padding: 8px 16px;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: .85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: .2s;
+    text-decoration: none;
+}
+
+.btn-back {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+}
+
+.btn-back:hover { color: var(--text); border-color: var(--muted); }
+
+.btn-refresh {
+    background: var(--accent);
+    border: none;
+    color: var(--bg);
+    font-weight: 700;
+}
+
+.btn-refresh:hover {
+    box-shadow: 0 4px 20px rgba(0,229,255,.3);
+    transform: translateY(-1px);
+}
+
+/* ── Main ── */
+.admin-main {
+    position: relative; z-index: 10;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 30px 80px;
+}
+
+/* ── Page title ── */
+.page-title { margin-bottom: 32px; }
+
+.page-title h1 {
+    font-family: var(--font-head);
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+}
+
+.page-title p {
+    font-size: .85rem;
+    color: var(--muted);
+    margin-top: 4px;
+}
+
+/* ── Stats grid ── */
 .stats-grid {
     display: grid;
-    /* auto-fit: cria colunas automáticas conforme o espaço. 
-       minmax: cada card tem no mínimo 220px */
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    margin-bottom: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 36px;
 }
 
-/* Estilo dos Cards de Resumo */
 .stat-card {
-    background: #111827;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    border: 1px solid #1f2937;
-    position: relative;
-    transition: 0.3s;
-    overflow: hidden; /* Esconde o excesso do brilho azul */
-}
-
-/* Efeito Glow nas bordas do card ao passar o mouse */
-.stat-card::before {
-    content: "";
-    position: absolute;
-    inset: -1px;
-    border-radius: 12px;
-    background: linear-gradient(120deg, #3b82f6, transparent, #3b82f6);
-    opacity: 0;
-    transition: 0.4s;
-    z-index: 0;
-}
-
-.stat-card:hover::before {
-    opacity: 1;
-}
-
-/* Garante que o texto fique acima do brilho */
-.stat-card * {
-    position: relative;
-    z-index: 1;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px 22px;
+    display: flex; align-items: center; gap: 16px;
+    transition: .2s;
+    animation: fadeUp .4s ease both;
 }
 
 .stat-card:hover {
-    transform: translateY(-6px) scale(1.02); /* Card sobe levemente no hover */
+    border-color: rgba(0,229,255,.3);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.3);
 }
 
-.stat-card h3 {
-    font-size: 13px;
-    color: #9ca3af;
-    margin-bottom: 10px;
-    text-transform: uppercase; /* Títulos dos cards em letras maiúsculas */
+.stat-icon { font-size: 1.5rem; }
+
+.stat-info { display: flex; flex-direction: column; gap: 2px; }
+
+.stat-label {
+    font-size: .75rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    font-weight: 600;
 }
 
-.stat-card .value {
-    font-size: 32px;
-    font-weight: bold;
-    color: #3b82f6; /* Azul destaque para os números das médias */
-    transition: 0.3s;
+.stat-value {
+    font-family: var(--font-head);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--accent);
 }
 
-/* =========================
-   BOTÃO DE ATUALIZAR
-========================= */
-.actions {
-    text-align: center;
-    margin-bottom: 25px;
-}
+.stat-value.bom   { color: var(--bom); }
+.stat-value.medio { color: var(--medio); }
+.stat-value.ruim  { color: var(--ruim); }
 
-.refresh-btn {
-    background: #1f2937;
-    color: #e5e7eb;
-    border: 1px solid #374151;
-    padding: 10px 22px;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.refresh-btn:hover {
-    background: #3b82f6;
-    border-color: #3b82f6;
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
-}
-
-/* =========================
-   TABELA DE DADOS
-========================= */
-.table-container {
-    background: #111827;
-    border-radius: 12px;
+/* ── Table ── */
+.table-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
     overflow: hidden;
-    border: 1px solid #1f2937;
-    animation: slideUp 0.8s ease; /* Tabela sobe ao carregar */
+    animation: fadeUp .5s ease .1s both;
 }
 
 table {
     width: 100%;
-    border-collapse: collapse; /* Remove espaços entre as bordas das células */
+    border-collapse: collapse;
+}
+
+thead tr {
+    background: rgba(0,0,0,.3);
+    border-bottom: 1px solid var(--border);
 }
 
 th {
-    background: #020617; /* Cabeçalho da tabela bem escuro */
-    color: #e5e7eb;
-    padding: 15px;
-    font-size: 14px;
+    padding: 14px 18px;
+    text-align: left;
+    font-family: var(--font-head);
+    font-size: .78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: var(--muted);
 }
 
 td {
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #1f2937;
-    font-size: 14px;
+    padding: 13px 18px;
+    border-bottom: 1px solid var(--border);
+    font-size: .9rem;
 }
 
-tr:hover td {
-    background: #0b1220; /* Linha destaca ao passar o mouse */
+tr:last-child td { border-bottom: none; }
+
+tbody tr { transition: background .15s; }
+tbody tr:hover td { background: rgba(0,229,255,.03); }
+
+.id-cell {
+    font-family: var(--font-head);
+    font-size: .8rem;
+    color: var(--muted);
+    font-weight: 600;
 }
 
-/* =========================
-   BADGES (STATUS COLORIDOS)
-========================= */
+.date-cell {
+    color: var(--muted);
+    font-size: .83rem;
+}
+
+/* ── Badges ── */
 .badge {
-    padding: 6px 10px;
+    display: inline-flex;
+    align-items: center; justify-content: center;
+    min-width: 32px;
+    padding: 4px 10px;
     border-radius: 8px;
-    font-weight: 500;
-    font-size: 13px;
-    display: inline-block;
+    font-family: var(--font-head);
+    font-weight: 700;
+    font-size: .9rem;
 }
 
-/* Verde para notas boas (Humor alto / Estresse baixo) */
-.bom {
-    background: rgba(34, 197, 94, 0.15);
-    color: #22c55e;
+.badge.bom   { background: rgba(34,197,94,.12);  color: var(--bom); }
+.badge.medio { background: rgba(245,158,11,.12); color: var(--medio); }
+.badge.ruim  { background: rgba(239,68,68,.12);  color: var(--ruim); }
+
+/* ── Empty state ── */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+}
+.empty-state span { font-size: 2.5rem; display: block; margin-bottom: 12px; }
+.empty-state p { font-size: .95rem; }
+
+/* ── Animations ── */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Amarelo para atenção */
-.medio {
-    background: rgba(250, 204, 21, 0.15);
-    color: #facc15;
-}
-
-/* Vermelho para alertas (Humor baixo / Estresse alto) */
-.ruim {
-    background: rgba(239, 68, 68, 0.15);
-    color: #ef4444;
-}
-
-/* =========================
-   ANIMAÇÕES
-========================= */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slideUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
+/* ── Responsivo ── */
+@media (max-width: 600px) {
+    .admin-header { padding: 16px 20px; }
+    .admin-main   { padding: 24px 16px 60px; }
+    th, td        { padding: 10px 12px; }
 }
