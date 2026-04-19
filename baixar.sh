@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# asterisco comenta em linguagem de terminal
 # Cores
 VERDE='\033[0;32m'
 AZUL='\033[0;34m'
