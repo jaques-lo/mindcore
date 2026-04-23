@@ -2,30 +2,20 @@
 # asterisco comenta em linguagem de terminal
 # Cores
 VERDE='\033[0;32m'
-AZUL='\033[0;34m'
+AZUL='\033[38;2;0;200;215m'
 AMARELO='\033[1;33m'
 VERMELHO='\033[0;31m'
 NC='\033[0m'
 
 echo -e "${AZUL}"
-echo "                  ▒▓▓▓▓▒"
-echo "                  ▒▓▓▓▓▒"
-echo "                    ▓▒"
-echo "                    ▓▓"
-echo "            ▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒"
-echo "         ▓▓▓▓                ▓▓▓▓"
-echo "        ▓▓▓                      ▒▓▓"
-echo "      ▒▓                          ▓▒"
-echo "    ▓▓▓▓                          ▓▓▓▓"
-echo "   ▒▓▓▓       ▓▓▓        ▒▓▓▓      ▓▓▓▒"
-echo "   ▓▓▓▓      ▓▓▓▓▓      ▓▒  ▓▓     ▓▓▓▓"
-echo "   ▓▓▓▓       ▓▓▓                  ▓▓▓▓"
-echo "   ▒▓▓▓                            ▓▓▓▓"
-echo "      ▓▓        ▓▓      ▓▓        ▓▓"
-echo "      ▓▓          ▓▓▓▓▓▓          ▓▓"
-echo "       ▓▓▓                      ▓▓▓"
-echo "        ▓▓▓▓▒▒   ░░░░░░   ▒▓▓▓▓▓"
-echo "             ▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒"
+echo "            _           _                    "
+echo "           (_)         | |                   "
+echo "  _ __ ___  _ _ __   __| | ___ ___  _ __ ___ "
+echo " | '_ \` _ \| | '_ \ / _\` |/ __/ _ \| '__/ _ \\"
+echo " | | | | | | | | | | (_| | (_| (_) | | |  __/"
+echo " |_| |_| |_|_|_| |_|\__,_|\___\___/|_|  \___|"
+echo "                                            "
+echo "                                            "
 echo -e "${NC}"
 
 echo -e "${AZUL}--- ATUALIZANDO AMBIENTE LOCAL ---${NC}\n"
