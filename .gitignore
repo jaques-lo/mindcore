@@ -1,0 +1,26 @@
+# ─── Sensível - NUNCA subir ────────────────────────────
+.env
+config/database.php
+
+# ─── Banco de dados ─────────────────────────────────────
+*.sql
+*.dump
+
+# ─── PHP ────────────────────────────────────────────────
+vendor/
+composer.lock
+
+# ─── Sistema ────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*~
+*.bak
+*.tmp
+
+# ─── Logs ───────────────────────────────────────────────
+*.log
+logs/
+subir.sh
+baixar.sh
+subir.sh
+baixar.sh
